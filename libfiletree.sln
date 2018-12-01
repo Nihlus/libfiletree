@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "metadata", ".\", "{F1A57014-71CE-4032-A652-01B7E35E14DB}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+		stylecop.json = stylecop.json
+		stylecop.ruleset = stylecop.ruleset
+	EndProjectSection
+EndProject
+
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "props", ".\props", "{47E747E8-1D9C-447A-BBA8-EFA5E38E948C}"
+	ProjectSection(SolutionItems) = preProject
+		props\common.props = props\common.props
+		props\nuget-common.props = props\nuget-common.props
+		props\netfx-mono.props = props\netfx-mono.props
+		props\stylecop.props = props\stylecop.props
+	EndProjectSection
+EndProject
+
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libfiletree", "libfiletree\libfiletree.csproj", "{428D03CE-DE01-4F4D-AF89-78D9ADF45982}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "libfiletree.Tests", "libfiletree.Tests\libfiletree.Tests.csproj", "{34A04ECA-7C09-471B-9D87-D6F76BF68E10}"
+EndProject
+
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{428D03CE-DE01-4F4D-AF89-78D9ADF45982}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{428D03CE-DE01-4F4D-AF89-78D9ADF45982}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{428D03CE-DE01-4F4D-AF89-78D9ADF45982}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{428D03CE-DE01-4F4D-AF89-78D9ADF45982}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34A04ECA-7C09-471B-9D87-D6F76BF68E10}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34A04ECA-7C09-471B-9D87-D6F76BF68E10}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34A04ECA-7C09-471B-9D87-D6F76BF68E10}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34A04ECA-7C09-471B-9D87-D6F76BF68E10}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal

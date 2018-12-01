@@ -1,0 +1,6 @@
+Textures\Tauren\head.blp
+Textures\Tauren\shoulders.blp
+Textures\Tauren\legs.blp
+Textures\root.blp
+rootfile.txt
+file-to-be-deleted.txt
