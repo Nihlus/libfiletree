@@ -14,8 +14,9 @@
         </AdditionalFiles>
     </ItemGroup>
     <ItemGroup>
-        <PackageReference Include="JetBrains.Annotations" Version="11.1.0" PrivateAssets="all" />
-        <PackageReference Include="JetBrainsAnnotations.Fody" Version="2.2.0" PrivateAssets="all" />
+        <PackageReference Include="JetBrains.Annotations" Version="2018.2.1" PrivateAssets="all" />
+        <PackageReference Include="JetBrainsAnnotations.Fody" Version="2.10.0" PrivateAssets="all" />
+        <PackageReference Include="liblistfile" Version="3.0.0-2" />
         <PackageReference Include="libwarcraft" Version="2.7.0" />
         <PackageReference Include="System.Memory" Version="4.5.1" />
     </ItemGroup>

@@ -1,0 +1,45 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+<PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <DefineConstants>$(DefineConstants);JETBRAINS_ANNOTATIONS</DefineConstants>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <DebugSymbols>true</DebugSymbols>
+    <RootNamespace>FileTree.Tests</RootNamespace>
+    <IsPackable>false</IsPackable>
+</PropertyGroup>
+<ItemGroup>
+    <AdditionalFiles Include="FodyWeavers.xml">
+        <InProject>false</InProject>
+    </AdditionalFiles>
+</ItemGroup>
+<ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.9.0" />
+    <PackageReference Include="Moq" Version="4.10.0" />
+    <PackageReference Include="xunit" Version="2.4.1" />
+    <PackageReference Include="xunit.runner.visualstudio" Version="2.4.1" />
+</ItemGroup>
+<ItemGroup>
+    <ProjectReference Include="..\libfiletree\libfiletree.csproj" />
+</ItemGroup>
+<ItemGroup>
+  <Folder Include="Unit" />
+</ItemGroup>
+<ItemGroup>
+  <EmbeddedResource Include="Data\FileLists\empty-package.txt" />
+  <EmbeddedResource Include="Data\FileLists\package1.txt" />
+  <EmbeddedResource Include="Data\FileLists\package2.txt" />
+  <None Remove="Data\package1.txt" />
+  <None Remove="Data\package2.txt" />
+  <None Remove="Data\empty-package.txt" />
+  <None Remove="Data\FileLists\single-file.txt" />
+  <EmbeddedResource Include="Data\FileLists\single-file.txt" />
+  <None Remove="Data\FileLists\single-file-in-subdir.txt" />
+  <EmbeddedResource Include="Data\FileLists\single-file-in-subdir.txt" />
+</ItemGroup>
+<Import Project="..\props\common.props" />
+<Import Project="$(SolutionRoot)\props\nuget-common.props" />
+<Import Project="$(SolutionRoot)\props\netfx-mono.props" />
+<Import Project="$(SolutionRoot)\props\stylecop.props" />
+
+</Project>

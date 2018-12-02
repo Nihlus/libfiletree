@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<assembly name="libfiletree">
+  <member name="M:FileTree.Nodes.IBranchNode.AppendChild(FileTree.Nodes.Node)">
+    <parameter name="child">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="P:FileTree.Nodes.IBranchNode.Children">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Nodes.Node.Name">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Nodes.Node.Parent">
+    <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.TreeBuilder.AddPackage(System.String,Warcraft.MPQ.IPackage)">
+    <parameter name="package">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+</assembly>

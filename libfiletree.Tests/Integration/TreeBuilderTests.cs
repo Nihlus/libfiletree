@@ -17,9 +17,11 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
+using System.IO;
 using System.Linq;
 using FileTree.Nodes;
 using FileTree.Tests.Data;
+using liblistfile;
 using Warcraft.Core;
 using Warcraft.MPQ;
 using Xunit;
@@ -291,7 +293,7 @@ namespace FileTree.Tests.Integration
 
             var tree = _treeBuilder.GetTree();
 
-            var virtualNode = tree.Children.First(c => c.Name == "Textures") as VirtualNode;
+            var virtualNode = (VirtualNode)tree.Children.First(c => c.Name == "Textures");
 
             var metaPackages = tree.Children.First();
 

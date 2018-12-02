@@ -18,9 +18,11 @@
 //
 
 using System;
+using System.IO;
 using System.Linq;
 using FileTree.Nodes;
 using JetBrains.Annotations;
+using liblistfile;
 using Warcraft.Core;
 using Warcraft.MPQ;
 
@@ -114,7 +116,7 @@ namespace FileTree
                     Node existingVirtualNode = null;
                     foreach (var childVirtualNode in parentVirtualNode.Children)
                     {
-                        if (childVirtualNode.Name.AsSpan().Equals(part, StringComparison.Ordinal))
+                        if (childVirtualNode.Name.AsSpan().Equals(part, StringComparison.OrdinalIgnoreCase))
                         {
                             existingVirtualNode = childVirtualNode;
                             break;
@@ -124,7 +126,7 @@ namespace FileTree
                     Node existingHardNode = null;
                     foreach (var childHardNode in parentHardNode.Children)
                     {
-                        if (childHardNode.Name.AsSpan().Equals(part, StringComparison.Ordinal))
+                        if (childHardNode.Name.AsSpan().Equals(part, StringComparison.OrdinalIgnoreCase))
                         {
                             existingHardNode = childHardNode;
                             break;

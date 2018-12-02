@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>netcoreapp2.1</TargetFramework>
+        <RootNamespace>FileTree.Benchmark</RootNamespace>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="BenchmarkDotNet" Version="0.11.3" />
+      <PackageReference Include="Moq" Version="4.10.0" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <None Remove="Data\sample-data.txt" />
+      <EmbeddedResource Include="Data\sample-data.txt" />
+      <None Remove="Data\big-sample-data.txt" />
+      <EmbeddedResource Include="Data\big-sample-data.txt" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\libfiletree\libfiletree.csproj" />
+    </ItemGroup>
+
+</Project>
