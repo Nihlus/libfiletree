@@ -22,6 +22,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using FileTree.Tree.Nodes;
 using FileTree.Tree.Serialized;
@@ -75,9 +76,10 @@ namespace FileTree.Tree
         /// Serializes the given tree to the output stream.
         /// </summary>
         /// <param name="root">The root node of the tree to serialize.</param>
+        /// <param name="ct">The cancellation token to use.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
         [PublicAPI, NotNull]
-        public Task SerializeAsync([NotNull] Node root)
+        public Task SerializeAsync([NotNull] Node root, CancellationToken ct = default)
         {
             var flattenedTree = FlattenTree(root).ToList();
 
@@ -94,6 +96,8 @@ namespace FileTree.Tree
 
             foreach (var node in flattenedTree)
             {
+                ct.ThrowIfCancellationRequested();
+
                 _absoluteNodeOffsets.Add(node, currentLayoutOffset);
                 currentLayoutOffset += GetSerializedSize(node);
             }
@@ -109,13 +113,15 @@ namespace FileTree.Tree
 
                 foreach (var node in flattenedTree)
                 {
+                    ct.ThrowIfCancellationRequested();
+
                     SerializeNode(node, writer);
                 }
 
                 writer.Write(nameBlock);
             }
 
-            return _outputStream.FlushAsync();
+            return _outputStream.FlushAsync(ct);
         }
 
         /// <summary>
