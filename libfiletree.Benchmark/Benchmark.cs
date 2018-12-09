@@ -1,14 +1,37 @@
+//
+//  Benchmark.cs
+//
+//  Copyright (c) 2018 Jarl Gullberg
+//
+//  This program is free software: you can redistribute it and/or modify
+//  it under the terms of the GNU General Public License as published by
+//  the Free Software Foundation, either version 3 of the License, or
+//  (at your option) any later version.
+//
+//  This program is distributed in the hope that it will be useful,
+//  but WITHOUT ANY WARRANTY; without even the implied warranty of
+//  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+//  GNU General Public License for more details.
+//
+//  You should have received a copy of the GNU General Public License
+//  along with this program.  If not, see <http://www.gnu.org/licenses/>.
+//
+
 using System.IO;
 using System.Reflection;
 using BenchmarkDotNet.Attributes;
 using FileTree.Tree;
 using FileTree.Tree.Nodes;
-using liblistfile;
+using JetBrains.Annotations;
+using ListFile;
 using Moq;
 using Warcraft.MPQ;
 
 namespace FileTree.Benchmark
 {
+    /// <summary>
+    /// Contains benchmarking setup.
+    /// </summary>
     public class Benchmark
     {
         private IPackage SamplePackage { get; set; }
@@ -17,6 +40,9 @@ namespace FileTree.Benchmark
 
         private TreeOptimizer _optimizer;
 
+        /// <summary>
+        /// Sets up shared data for benchmarks.
+        /// </summary>
         [GlobalSetup]
         public void Setup()
         {
@@ -41,7 +67,11 @@ namespace FileTree.Benchmark
             _optimizer = new TreeOptimizer(Dictionary);
         }
 
-        [Benchmark]
+        /// <summary>
+        /// Benchmarks the new algorithm.
+        /// </summary>
+        /// <returns>The generated node.</returns>
+        [Benchmark, NotNull]
         public Node NewAlgorithm()
         {
             var builder = new TreeBuilder();

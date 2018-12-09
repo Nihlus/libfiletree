@@ -22,7 +22,7 @@ using System.Threading;
 using FileTree.ProgressReporters;
 using FileTree.Tree.Nodes;
 using JetBrains.Annotations;
-using liblistfile;
+using ListFile;
 using Warcraft.Core;
 
 namespace FileTree.Tree
@@ -133,8 +133,7 @@ namespace FileTree.Tree
 
             if (!node.Type.HasFlag(NodeType.Meta))
             {
-                var entry = _dictionary.GetTermEntry(node.Name);
-                if (!(entry is null))
+                if (_dictionary.ContainsTerm(node.Name))
                 {
                     node.Name = _dictionary.GetTermEntry(node.Name).Term;
                 }

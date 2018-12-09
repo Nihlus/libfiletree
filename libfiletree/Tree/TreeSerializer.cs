@@ -27,7 +27,6 @@ using System.Threading.Tasks;
 using FileTree.Tree.Nodes;
 using FileTree.Tree.Serialized;
 using JetBrains.Annotations;
-using liblistfile;
 using Warcraft.Core.Extensions;
 
 namespace FileTree.Tree
@@ -107,7 +106,7 @@ namespace FileTree.Tree
             // Now, we can begin writing
             using (var writer = new BinaryWriter(_outputStream, Encoding.Default, _keepStreamOpen))
             {
-                writer.Write(OptimizedNodeTree.Version);
+                writer.Write(SerializedTree.Version);
                 writer.Write(_nodeBlockOffset);
                 writer.Write(_nameBlockOffset);
 

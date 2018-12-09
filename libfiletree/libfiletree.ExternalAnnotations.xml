@@ -1,61 +1,243 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <assembly name="libfiletree">
+  <member name="T:FileTree.ProgressReporters.PackageNodesCreationProgress">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.ProgressReporters.PackageNodesCreationProgress.CompletedPaths">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.ProgressReporters.PackageNodesCreationProgress.PathCount">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="T:FileTree.ProgressReporters.TreeOptimizationProgress">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.ProgressReporters.TreeOptimizationProgress.NodeCount">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.ProgressReporters.TreeOptimizationProgress.OptimizedNodes">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.ProgressReporters.TreeOptimizationProgress.TracedNodes">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="T:FileTree.Tree.Nodes.IBranchNode">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
   <member name="M:FileTree.Tree.Nodes.IBranchNode.AppendChild(FileTree.Tree.Nodes.Node)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <parameter name="child">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
   <member name="P:FileTree.Tree.Nodes.IBranchNode.Children">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
+  </member>
+  <member name="T:FileTree.Tree.Nodes.IVirtualNode">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.Nodes.IVirtualNode.AppendHardNode(FileTree.Tree.Nodes.Node)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <parameter name="hardNode">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="P:FileTree.Tree.Nodes.IVirtualNode.HardNodes">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.ItemNotNullAttribute.#ctor" />
+  </member>
+  <member name="T:FileTree.Tree.Nodes.Node">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.Nodes.Node.#ctor">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.Nodes.Node.CountChildren(FileTree.Tree.Nodes.Node)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.PureAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Tree.Nodes.Node.FileType">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
   </member>
   <member name="P:FileTree.Tree.Nodes.Node.Name">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
   <member name="P:FileTree.Tree.Nodes.Node.Parent">
     <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
   </member>
+  <member name="P:FileTree.Tree.Nodes.Node.Type">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="T:FileTree.Tree.Nodes.VirtualNode">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.Nodes.VirtualNode.#ctor">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="T:FileTree.Tree.Serialized.SerializedNode">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Tree.Serialized.SerializedNode.ChildCount">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Tree.Serialized.SerializedNode.ChildOffsets">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Tree.Serialized.SerializedNode.FileType">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Tree.Serialized.SerializedNode.HardNodeCount">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Tree.Serialized.SerializedNode.HardNodeOffsets">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.Serialized.SerializedNode.HasChildren">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Tree.Serialized.SerializedNode.NameOffset">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="P:FileTree.Tree.Serialized.SerializedNode.ParentOffset">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
   <member name="M:FileTree.Tree.Serialized.SerializedNode.ReadNode(System.IO.BinaryReader,System.UInt64)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     <parameter name="br">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
+  <member name="P:FileTree.Tree.Serialized.SerializedNode.Type">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="T:FileTree.Tree.Serialized.SerializedTree">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
   <member name="M:FileTree.Tree.Serialized.SerializedTree.#ctor(System.IO.Stream)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <parameter name="treeStream">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
   <member name="M:FileTree.Tree.Serialized.SerializedTree.GetNode(System.UInt64)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
   <member name="M:FileTree.Tree.Serialized.SerializedTree.GetNodeName(FileTree.Tree.Serialized.SerializedNode)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     <parameter name="node">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
   <member name="M:FileTree.Tree.Serialized.SerializedTree.GetNodeOffset(FileTree.Tree.Serialized.SerializedNode)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <parameter name="node">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
+  <member name="F:FileTree.Tree.Serialized.SerializedTree.HeaderSize">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
   <member name="P:FileTree.Tree.Serialized.SerializedTree.Root">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
-  <member name="M:FileTree.Tree.TreeBuilder.AddPackage(System.String,Warcraft.MPQ.IPackage)">
+  <member name="F:FileTree.Tree.Serialized.SerializedTree.Version">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="T:FileTree.Tree.TreeBuilder">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.TreeBuilder.#ctor">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.TreeBuilder.AddPackage(System.String,Warcraft.MPQ.IPackage,System.IProgress{FileTree.ProgressReporters.PackageNodesCreationProgress},System.Threading.CancellationToken)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <parameter name="packageName">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="package">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="progress">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:FileTree.Tree.TreeBuilder.AddPackage(System.String,Warcraft.MPQ.IPackage,System.Threading.CancellationToken)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <parameter name="packageName">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
     <parameter name="package">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:FileTree.Tree.TreeOptimizer.OptimizeTree(FileTree.Tree.Nodes.Node)">
+  <member name="M:FileTree.Tree.TreeBuilder.AddPackage(System.String,Warcraft.MPQ.IPackage)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <parameter name="packageName">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="package">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:FileTree.Tree.TreeBuilder.GetTree">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
+  <member name="T:FileTree.Tree.TreeOptimizer">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.TreeOptimizer.#ctor(ListFile.ListfileDictionary)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <parameter name="dictionary">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:FileTree.Tree.TreeOptimizer.OptimizeTree(FileTree.Tree.Nodes.Node,System.IProgress{FileTree.ProgressReporters.TreeOptimizationProgress},System.Threading.CancellationToken)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <parameter name="root">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+    <parameter name="progress">
+      <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:FileTree.Tree.TreeOptimizer.OptimizeTree(FileTree.Tree.Nodes.Node,System.Threading.CancellationToken)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <parameter name="root">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:FileTree.Tree.TreeOptimizer.OptimizeTree(FileTree.Tree.Nodes.Node)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <parameter name="root">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="T:FileTree.Tree.TreeSerializer">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+  </member>
   <member name="M:FileTree.Tree.TreeSerializer.#ctor(System.IO.Stream,System.Boolean)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
     <parameter name="outputStream">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:FileTree.Tree.TreeSerializer.SerializeAsync(FileTree.Tree.Nodes.Node)">
+  <member name="M:FileTree.Tree.TreeSerializer.SerializeAsync(FileTree.Tree.Nodes.Node,System.Threading.CancellationToken)">
+    <attribute ctor="M:JetBrains.Annotations.PublicAPIAttribute.#ctor" />
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     <parameter name="root">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>

@@ -12,14 +12,17 @@
     </ItemGroup>
 
     <ItemGroup>
-      <None Remove="Data\sample-data.txt" />
       <EmbeddedResource Include="Data\sample-data.txt" />
-      <None Remove="Data\big-sample-data.txt" />
       <EmbeddedResource Include="Data\big-sample-data.txt" />
     </ItemGroup>
 
     <ItemGroup>
       <ProjectReference Include="..\libfiletree\libfiletree.csproj" />
     </ItemGroup>
-
+    
+    <Import Project="..\props\common.props" />
+    <Import Project="$(SolutionRoot)\props\jetbrains.props" />
+    <Import Project="$(SolutionRoot)\props\nuget-common.props" />
+    <Import Project="$(SolutionRoot)\props\netfx-mono.props" />
+    <Import Project="$(SolutionRoot)\props\stylecop.props" />
 </Project>

@@ -24,7 +24,7 @@ using FileTree.Tests.Data;
 using FileTree.Tree;
 using FileTree.Tree.Nodes;
 using FileTree.Tree.Serialized;
-using liblistfile;
+using ListFile;
 using Warcraft.Core;
 using Warcraft.MPQ;
 using Xunit;
