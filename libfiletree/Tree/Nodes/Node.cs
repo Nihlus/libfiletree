@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using JetBrains.Annotations;
 using Warcraft.Core;
 
-namespace FileTree.Nodes
+namespace FileTree.Tree.Nodes
 {
     /// <summary>
     /// Represents a node in a file tree.

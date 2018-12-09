@@ -20,7 +20,7 @@
 using System.Collections.Generic;
 using JetBrains.Annotations;
 
-namespace FileTree.Nodes
+namespace FileTree.Tree.Nodes
 {
     /// <summary>
     /// Represents the public interface of a branch node.

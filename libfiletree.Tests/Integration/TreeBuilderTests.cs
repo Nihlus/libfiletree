@@ -19,8 +19,10 @@
 
 using System.IO;
 using System.Linq;
-using FileTree.Nodes;
+using System.Threading.Tasks;
 using FileTree.Tests.Data;
+using FileTree.Tree;
+using FileTree.Tree.Nodes;
 using liblistfile;
 using Warcraft.Core;
 using Warcraft.MPQ;
@@ -32,13 +34,15 @@ namespace FileTree.Tests.Integration
 {
     public class TreeBuilderTests
     {
-        private TreeBuilder _treeBuilder;
+        private readonly TreeBuilder _treeBuilder;
 
-        private IPackage _package1;
-        private IPackage _package2;
-        private IPackage _emptyPackage;
-        private IPackage _singleFile;
-        private IPackage _singleFileInSubdir;
+        private readonly IPackage _package1;
+        private readonly IPackage _package2;
+        private readonly IPackage _emptyPackage;
+        private readonly IPackage _singleFile;
+        private readonly IPackage _singleFileInSubdir;
+
+        private ListfileDictionary _dictionary;
 
         public TreeBuilderTests()
         {
@@ -50,6 +54,9 @@ namespace FileTree.Tests.Integration
             _emptyPackage = MockedPackageBuilder.GetMockedPackage("empty-package");
             _singleFile = MockedPackageBuilder.GetMockedPackage("single-file");
             _singleFileInSubdir = MockedPackageBuilder.GetMockedPackage("single-file-in-subdir");
+
+            var dictionaryData = File.ReadAllBytes("/home/jarl/.nuget/packages/liblistfile/2.1.0/contentFiles/any/netstandard2.0/Dictionary/dictionary.dic");
+            _dictionary = new ListfileDictionary(dictionaryData);
         }
 
         [Fact]
@@ -305,6 +312,39 @@ namespace FileTree.Tests.Integration
 
             Assert.True(virtualNode.HardNodes.Contains(hardNode1));
             Assert.True(virtualNode.HardNodes.Contains(hardNode2));
+        }
+
+        [Fact]
+        public async Task CanSerializeTree()
+        {
+            _treeBuilder.AddPackage("package1", _package1);
+
+            var tree = _treeBuilder.GetTree();
+            var optimizer = new TreeOptimizer(_dictionary);
+
+            tree = optimizer.OptimizeTree(tree);
+
+            using (var ms = new MemoryStream())
+            {
+                using (var serializer = new TreeSerializer(ms, true))
+                {
+                    await serializer.SerializeAsync(tree);
+                }
+
+                // Rewind the stream
+                ms.Position = 0;
+
+                var optimizedTree = new OptimizedNodeTree(ms);
+
+                Assert.Equal((ulong)tree.Children.Count, optimizedTree.Root.ChildCount);
+
+                var rootChildren = optimizedTree.Root.ChildOffsets.Select(optimizedTree.GetNode);
+                var rootChildNames = rootChildren.Select(optimizedTree.GetNodeName).ToList();
+
+                Assert.Contains(rootChildNames, n => n == "Textures");
+                Assert.Contains(rootChildNames, n => n == "rootfile.txt");
+                Assert.Contains(rootChildNames, n => n == "file-to-be-deleted.txt");
+            }
         }
     }
 }

@@ -19,4 +19,14 @@
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
+  <member name="M:FileTree.TreeSerializer.#ctor(System.IO.Stream,System.Boolean)">
+    <parameter name="outputStream">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:FileTree.TreeSerializer.SerializeAsync(FileTree.Nodes.Node)">
+    <parameter name="root">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
 </assembly>

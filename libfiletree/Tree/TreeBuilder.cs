@@ -18,15 +18,13 @@
 //
 
 using System;
-using System.IO;
 using System.Linq;
-using FileTree.Nodes;
+using FileTree.Tree.Nodes;
 using JetBrains.Annotations;
-using liblistfile;
 using Warcraft.Core;
 using Warcraft.MPQ;
 
-namespace FileTree
+namespace FileTree.Tree
 {
     /// <summary>
     /// Builds node trees from input packages.

@@ -8,6 +8,6 @@ Intel Core i7-4790K CPU 4.00GHz (Haswell), 1 CPU, 8 logical and 4 physical cores
 
 
 ```
-|       Method |     Mean |     Error |    StdDev |
-|------------- |---------:|----------:|----------:|
-| NewAlgorithm | 83.85 ms | 0.2493 ms | 0.2332 ms |
+|       Method |    Mean |   Error |  StdDev |
+|------------- |--------:|--------:|--------:|
+| NewAlgorithm | 395.1 s | 2.239 s | 1.985 s |

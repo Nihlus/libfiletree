@@ -18,9 +18,8 @@
 //
 
 using System.Collections.Generic;
-using System.Linq;
 
-namespace FileTree.Nodes
+namespace FileTree.Tree.Nodes
 {
     /// <summary>
     /// Represents a virtual branch node that has one or more "hard" nodes it acts as a front for.

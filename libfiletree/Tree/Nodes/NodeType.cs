@@ -19,7 +19,7 @@
 
 using System;
 
-namespace FileTree.Nodes
+namespace FileTree.Tree.Nodes
 {
     /// <summary>
     /// A set of types a node can have.

@@ -19,7 +19,7 @@
 
 using System.Collections.Generic;
 
-namespace FileTree.Nodes
+namespace FileTree.Tree.Nodes
 {
     /// <summary>
     /// Represents the public interface of a virtual node.

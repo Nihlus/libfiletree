@@ -1,7 +1,8 @@
 using System.IO;
 using System.Reflection;
 using BenchmarkDotNet.Attributes;
-using FileTree.Nodes;
+using FileTree.Tree;
+using FileTree.Tree.Nodes;
 using liblistfile;
 using Moq;
 using Warcraft.MPQ;
@@ -20,7 +21,7 @@ namespace FileTree.Benchmark
         public void Setup()
         {
             string[] fileList;
-            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("FileTree.Benchmark.Data.sample-data.txt"))
+            using (var stream = Assembly.GetExecutingAssembly().GetManifestResourceStream("FileTree.Benchmark.Data.big-sample-data.txt"))
             {
                 using (var sr = new StreamReader(stream))
                 {

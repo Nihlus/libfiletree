@@ -17,13 +17,12 @@
 //  along with this program.  If not, see <http://www.gnu.org/licenses/>.
 //
 
-using System;
-using FileTree.Nodes;
+using FileTree.Tree.Nodes;
 using JetBrains.Annotations;
 using liblistfile;
 using Warcraft.Core;
 
-namespace FileTree
+namespace FileTree.Tree
 {
     /// <summary>
     /// Optimizes a node tree, normalizing names and applying file type traces in branch nodes.
