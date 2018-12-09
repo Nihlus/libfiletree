@@ -45,6 +45,7 @@ namespace FileTree.Tree
         /// </summary>
         /// <param name="root">The root node of the tree.</param>
         /// <returns>The optimized tree.</returns>
+        [NotNull]
         public Node OptimizeTree(Node root)
         {
             var tree = root;

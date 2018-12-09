@@ -155,7 +155,7 @@ namespace FileTree.Tests.Integration
             var leaf = packageNode.Children.First();
             Assert.IsType<Node>(leaf);
 
-            var fileNode = (Node)leaf;
+            var fileNode = leaf;
 
             Assert.Equal("file.txt", fileNode.Name);
             Assert.True(fileNode.Type.HasFlag(NodeType.File));

@@ -61,7 +61,7 @@ namespace FileTree.Utilities.Span
             int sliceStart = 0;
             int sliceEnd = 0;
 
-            while (sliceEnd < _span.Length && _span[sliceEnd] != '\\')
+            while (sliceEnd < _span.Length && _span[sliceEnd] != _delimiter)
             {
                 ++sliceEnd;
             }

@@ -59,6 +59,8 @@ namespace FileTree.Tree.Nodes
         public Node()
         {
             Children = new List<Node>();
+
+            Name = string.Empty;
         }
 
         /// <inheritdoc />
