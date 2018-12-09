@@ -9,7 +9,8 @@
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup>
-        <Version>1.0.0</Version>
+        <Version>1.0.0-rc1</Version>
+        <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
         <PackageReference Include="liblistfile" Version="3.0.0-rc7" />
@@ -18,6 +19,7 @@
     </ItemGroup>
     <Import Project="..\props\common.props" />
     <Import Project="$(SolutionRoot)\props\jetbrains.props" />
+    <Import Project="$(SolutionRoot)\props\nuget-common.props" />
     <Import Project="$(SolutionRoot)\props\netfx-mono.props" />
     <Import Project="$(SolutionRoot)\props\stylecop.props" />
 </Project>

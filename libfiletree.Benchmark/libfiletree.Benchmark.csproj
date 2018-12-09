@@ -4,6 +4,7 @@
         <OutputType>Exe</OutputType>
         <TargetFramework>netcoreapp2.1</TargetFramework>
         <RootNamespace>FileTree.Benchmark</RootNamespace>
+        <IsPackable>false</IsPackable>
     </PropertyGroup>
 
     <ItemGroup>
@@ -19,10 +20,9 @@
     <ItemGroup>
       <ProjectReference Include="..\libfiletree\libfiletree.csproj" />
     </ItemGroup>
-    
+
     <Import Project="..\props\common.props" />
     <Import Project="$(SolutionRoot)\props\jetbrains.props" />
-    <Import Project="$(SolutionRoot)\props\nuget-common.props" />
     <Import Project="$(SolutionRoot)\props\netfx-mono.props" />
     <Import Project="$(SolutionRoot)\props\stylecop.props" />
 </Project>

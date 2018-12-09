@@ -77,17 +77,17 @@ namespace FileTree.Tree.Nodes
         /// <summary>
         /// Recursively counts the number of children in this node.
         /// </summary>
-        /// <param name="root">The root node to start at. Defaults to the instance.</param>
+        /// <param name="current">The root node to start at. Defaults to the instance.</param>
         /// <returns>The total number of children.</returns>
         [PublicAPI, Pure]
-        public ulong CountChildren(Node root = null)
+        public ulong CountChildren(Node current = null)
         {
-            root = root ?? this;
+            current = current ?? this;
 
             ulong count = 0;
 
-            count += (ulong)Children.Count;
-            foreach (var child in Children)
+            count += (ulong)current.Children.Count;
+            foreach (var child in current.Children)
             {
                 count += CountChildren(child);
             }
