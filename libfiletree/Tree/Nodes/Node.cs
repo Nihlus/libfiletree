@@ -26,22 +26,25 @@ namespace FileTree.Tree.Nodes
     /// <summary>
     /// Represents a node in a file tree.
     /// </summary>
+    [PublicAPI]
     public class Node : IBranchNode
     {
         /// <summary>
         /// Gets or sets the name of the node.
         /// </summary>
-        [NotNull]
+        [PublicAPI, NotNull]
         public string Name { get; set; }
 
         /// <summary>
         /// Gets or sets the type of the node.
         /// </summary>
+        [PublicAPI]
         public NodeType Type { get; set; }
 
         /// <summary>
         /// Gets or sets the file type of the leaf node.
         /// </summary>
+        [PublicAPI]
         public WarcraftFileType FileType { get; set; }
 
         /// <summary>
@@ -56,6 +59,7 @@ namespace FileTree.Tree.Nodes
         /// <summary>
         /// Initializes a new instance of the <see cref="Node"/> class.
         /// </summary>
+        [PublicAPI]
         public Node()
         {
             Children = new List<Node>();

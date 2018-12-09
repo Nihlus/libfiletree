@@ -18,23 +18,27 @@
 //
 
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace FileTree.Tree.Nodes
 {
     /// <summary>
     /// Represents the public interface of a virtual node.
     /// </summary>
+    [PublicAPI]
     public interface IVirtualNode
     {
         /// <summary>
         /// Gets the hard nodes that this virtual node represents.
         /// </summary>
+        [PublicAPI, NotNull, ItemNotNull]
         IList<Node> HardNodes { get; }
 
         /// <summary>
         /// Appends a hard node to this virtual node.
         /// </summary>
         /// <param name="hardNode">The hard node.</param>
-        void AppendHardNode(Node hardNode);
+        [PublicAPI]
+        void AppendHardNode([NotNull] Node hardNode);
     }
 }

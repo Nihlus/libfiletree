@@ -18,12 +18,14 @@
 //
 
 using System.Collections.Generic;
+using JetBrains.Annotations;
 
 namespace FileTree.Tree.Nodes
 {
     /// <summary>
     /// Represents a virtual branch node that has one or more "hard" nodes it acts as a front for.
     /// </summary>
+    [PublicAPI]
     public class VirtualNode : Node, IVirtualNode
     {
         /// <inheritdoc />
@@ -32,6 +34,7 @@ namespace FileTree.Tree.Nodes
         /// <summary>
         /// Initializes a new instance of the <see cref="VirtualNode"/> class.
         /// </summary>
+        [PublicAPI]
         public VirtualNode()
         {
             HardNodes = new List<Node>();

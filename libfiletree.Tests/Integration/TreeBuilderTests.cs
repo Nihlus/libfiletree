@@ -23,6 +23,7 @@ using System.Threading.Tasks;
 using FileTree.Tests.Data;
 using FileTree.Tree;
 using FileTree.Tree.Nodes;
+using FileTree.Tree.Serialized;
 using liblistfile;
 using Warcraft.Core;
 using Warcraft.MPQ;
@@ -334,7 +335,7 @@ namespace FileTree.Tests.Integration
                 // Rewind the stream
                 ms.Position = 0;
 
-                var optimizedTree = new OptimizedNodeTree(ms);
+                var optimizedTree = new SerializedTree(ms);
 
                 Assert.Equal((ulong)tree.Children.Count, optimizedTree.Root.ChildCount);
 

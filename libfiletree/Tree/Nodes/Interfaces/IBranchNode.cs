@@ -25,18 +25,20 @@ namespace FileTree.Tree.Nodes
     /// <summary>
     /// Represents the public interface of a branch node.
     /// </summary>
+    [PublicAPI]
     public interface IBranchNode
     {
         /// <summary>
         /// Gets the children of the node.
         /// </summary>
-        [NotNull]
+        [PublicAPI, NotNull, ItemNotNull]
         IList<Node> Children { get; }
 
         /// <summary>
         /// Appends the given child to the branch node.
         /// </summary>
         /// <param name="child">The child to append.</param>
+        [PublicAPI]
         void AppendChild([NotNull] Node child);
     }
 }

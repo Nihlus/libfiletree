@@ -1,30 +1,61 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <assembly name="libfiletree">
-  <member name="M:FileTree.Nodes.IBranchNode.AppendChild(FileTree.Nodes.Node)">
+  <member name="M:FileTree.Tree.Nodes.IBranchNode.AppendChild(FileTree.Tree.Nodes.Node)">
     <parameter name="child">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="P:FileTree.Nodes.IBranchNode.Children">
+  <member name="P:FileTree.Tree.Nodes.IBranchNode.Children">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
-  <member name="P:FileTree.Nodes.Node.Name">
+  <member name="P:FileTree.Tree.Nodes.Node.Name">
     <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
   </member>
-  <member name="P:FileTree.Nodes.Node.Parent">
+  <member name="P:FileTree.Tree.Nodes.Node.Parent">
     <attribute ctor="M:JetBrains.Annotations.CanBeNullAttribute.#ctor" />
   </member>
-  <member name="M:FileTree.TreeBuilder.AddPackage(System.String,Warcraft.MPQ.IPackage)">
+  <member name="M:FileTree.Tree.Serialized.SerializedNode.ReadNode(System.IO.BinaryReader,System.UInt64)">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <parameter name="br">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:FileTree.Tree.Serialized.SerializedTree.#ctor(System.IO.Stream)">
+    <parameter name="treeStream">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:FileTree.Tree.Serialized.SerializedTree.GetNode(System.UInt64)">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.Serialized.SerializedTree.GetNodeName(FileTree.Tree.Serialized.SerializedNode)">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    <parameter name="node">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="M:FileTree.Tree.Serialized.SerializedTree.GetNodeOffset(FileTree.Tree.Serialized.SerializedNode)">
+    <parameter name="node">
+      <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+    </parameter>
+  </member>
+  <member name="P:FileTree.Tree.Serialized.SerializedTree.Root">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.TreeBuilder.AddPackage(System.String,Warcraft.MPQ.IPackage)">
     <parameter name="package">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:FileTree.TreeSerializer.#ctor(System.IO.Stream,System.Boolean)">
+  <member name="M:FileTree.Tree.TreeOptimizer.OptimizeTree(FileTree.Tree.Nodes.Node)">
+    <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
+  </member>
+  <member name="M:FileTree.Tree.TreeSerializer.#ctor(System.IO.Stream,System.Boolean)">
     <parameter name="outputStream">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>
   </member>
-  <member name="M:FileTree.TreeSerializer.SerializeAsync(FileTree.Nodes.Node)">
+  <member name="M:FileTree.Tree.TreeSerializer.SerializeAsync(FileTree.Tree.Nodes.Node)">
     <parameter name="root">
       <attribute ctor="M:JetBrains.Annotations.NotNullAttribute.#ctor" />
     </parameter>

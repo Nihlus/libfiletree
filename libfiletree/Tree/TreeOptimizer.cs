@@ -27,15 +27,18 @@ namespace FileTree.Tree
     /// <summary>
     /// Optimizes a node tree, normalizing names and applying file type traces in branch nodes.
     /// </summary>
+    [PublicAPI]
     public class TreeOptimizer
     {
+        [NotNull]
         private readonly ListfileDictionary _dictionary;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TreeOptimizer"/> class.
         /// </summary>
         /// <param name="dictionary">The dictionary to use.</param>
-        public TreeOptimizer(ListfileDictionary dictionary)
+        [PublicAPI]
+        public TreeOptimizer([NotNull] ListfileDictionary dictionary)
         {
             _dictionary = dictionary;
         }
@@ -45,8 +48,8 @@ namespace FileTree.Tree
         /// </summary>
         /// <param name="root">The root node of the tree.</param>
         /// <returns>The optimized tree.</returns>
-        [NotNull]
-        public Node OptimizeTree(Node root)
+        [PublicAPI, NotNull]
+        public Node OptimizeTree([NotNull] Node root)
         {
             var tree = root;
 
@@ -61,7 +64,7 @@ namespace FileTree.Tree
         /// </summary>
         /// <param name="tree">The root node of the tree to normalize.</param>
         /// <returns>The normalized tree.</returns>
-        [NotNull]
+        [PublicAPI, NotNull]
         private Node NormalizeNames([NotNull] Node tree)
         {
             NormalizeNode(tree);

@@ -24,6 +24,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using FileTree.Tree.Nodes;
+using FileTree.Tree.Serialized;
 using JetBrains.Annotations;
 using liblistfile;
 using Warcraft.Core.Extensions;
@@ -33,19 +34,23 @@ namespace FileTree.Tree
     /// <summary>
     /// Serializes node trees.
     /// </summary>
+    [PublicAPI]
     public class TreeSerializer : IDisposable
     {
+        [NotNull]
         private readonly Stream _outputStream;
         private readonly bool _keepStreamOpen;
 
         /// <summary>
         /// Holds byte offsets to node names in the name block, relative to the start of the name block.
         /// </summary>
+        [NotNull]
         private readonly Dictionary<string, long> _relativeNameOffsets;
 
         /// <summary>
         /// Holds absolute byte offsets to nodes in the output.
         /// </summary>
+        [NotNull]
         private readonly Dictionary<Node, long> _absoluteNodeOffsets;
 
         private long _nodeBlockOffset;
@@ -56,6 +61,7 @@ namespace FileTree.Tree
         /// </summary>
         /// <param name="outputStream">The output stream.</param>
         /// <param name="keepStreamOpen">Whether to keep the output stream open after finishing.</param>
+        [PublicAPI]
         public TreeSerializer([NotNull] Stream outputStream, bool keepStreamOpen = false)
         {
             _outputStream = outputStream;
@@ -70,6 +76,7 @@ namespace FileTree.Tree
         /// </summary>
         /// <param name="root">The root node of the tree to serialize.</param>
         /// <returns>A task representing the asynchronous operation.</returns>
+        [PublicAPI, NotNull]
         public Task SerializeAsync([NotNull] Node root)
         {
             var flattenedTree = FlattenTree(root).ToList();
@@ -80,7 +87,7 @@ namespace FileTree.Tree
             // 2: Build layout
             // 2.1: Order is header, root, nodes, names, sorting lists
             long currentLayoutOffset = 0;
-            currentLayoutOffset += OptimizedNodeTree.HeaderSize;
+            currentLayoutOffset += SerializedTree.HeaderSize;
 
             // Save the node block offset
             _nodeBlockOffset = currentLayoutOffset;
@@ -116,6 +123,7 @@ namespace FileTree.Tree
         /// </summary>
         /// <param name="root">The root of the tree.</param>
         /// <returns>A flattened list of nodes.</returns>
+        [NotNull, ItemNotNull]
         private IEnumerable<Node> FlattenTree([NotNull] Node root)
         {
             var stack = new Stack<Node>();
@@ -139,7 +147,7 @@ namespace FileTree.Tree
         /// <param name="nodes">The nodes in the tree.</param>
         /// <returns>The serialized name block.</returns>
         [NotNull]
-        private byte[] CreateNameBlock([NotNull] IEnumerable<Node> nodes)
+        private byte[] CreateNameBlock([NotNull, ItemNotNull] IEnumerable<Node> nodes)
         {
             using (var ms = new MemoryStream())
             {
@@ -242,7 +250,7 @@ namespace FileTree.Tree
         {
             if (!_keepStreamOpen)
             {
-                _outputStream?.Dispose();
+                _outputStream.Dispose();
             }
         }
     }

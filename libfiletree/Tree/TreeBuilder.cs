@@ -19,6 +19,7 @@
 
 using System;
 using System.Linq;
+using System.Threading;
 using FileTree.Tree.Nodes;
 using JetBrains.Annotations;
 using Warcraft.Core;
@@ -29,21 +30,25 @@ namespace FileTree.Tree
     /// <summary>
     /// Builds node trees from input packages.
     /// </summary>
+    [PublicAPI]
     public class TreeBuilder
     {
         /// <summary>
         /// Gets the root node of the tree.
         /// </summary>
+        [NotNull]
         private Node Root { get; }
 
         /// <summary>
         /// Gets the meta node under which separate package trees are kept.
         /// </summary>
+        [NotNull]
         private Node PackagesMetaNode { get; }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="TreeBuilder"/> class.
         /// </summary>
+        [PublicAPI]
         public TreeBuilder()
         {
             Root = new Node
@@ -66,7 +71,8 @@ namespace FileTree.Tree
         /// </summary>
         /// <param name="packageName">The name of the package.</param>
         /// <param name="package">The package.</param>
-        public void AddPackage(string packageName, [NotNull] IPackage package)
+        [PublicAPI]
+        public void AddPackage([NotNull] string packageName, [NotNull] IPackage package)
         {
             if (PackagesMetaNode.Children.Any(c => c.Name == packageName))
             {
@@ -214,6 +220,7 @@ namespace FileTree.Tree
         /// Gets the tree contained in the builder.
         /// </summary>
         /// <returns>The root node of the tree.</returns>
+        [PublicAPI, NotNull]
         public Node GetTree()
         {
             return Root;
