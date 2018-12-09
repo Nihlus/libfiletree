@@ -104,7 +104,7 @@ namespace FileTree.Tree
             _nameBlockOffset = currentLayoutOffset;
 
             // Now, we can begin writing
-            using (var writer = new BinaryWriter(_outputStream, Encoding.Default, _keepStreamOpen))
+            using (var writer = new BinaryWriter(_outputStream, Encoding.Default, true))
             {
                 writer.Write(SerializedTree.Version);
                 writer.Write(_nodeBlockOffset);
