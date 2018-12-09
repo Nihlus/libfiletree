@@ -20,6 +20,7 @@
 using System;
 using System.Linq;
 using System.Threading;
+using FileTree.ProgressReporters;
 using FileTree.Tree.Nodes;
 using JetBrains.Annotations;
 using Warcraft.Core;
@@ -73,6 +74,33 @@ namespace FileTree.Tree
         /// <param name="package">The package.</param>
         [PublicAPI]
         public void AddPackage([NotNull] string packageName, [NotNull] IPackage package)
+            => AddPackage(packageName, package, null, CancellationToken.None);
+
+        /// <summary>
+        /// Adds the file list of the given package to the node tree.
+        /// </summary>
+        /// <param name="packageName">The name of the package.</param>
+        /// <param name="package">The package.</param>
+        /// <param name="ct">The cancellation token to use.</param>
+        [PublicAPI]
+        public void AddPackage([NotNull] string packageName, [NotNull] IPackage package, CancellationToken ct)
+            => AddPackage(packageName, package, null, ct);
+
+        /// <summary>
+        /// Adds the file list of the given package to the node tree.
+        /// </summary>
+        /// <param name="packageName">The name of the package.</param>
+        /// <param name="package">The package.</param>
+        /// <param name="progress">The progress reporter to use.</param>
+        /// <param name="ct">The cancellation token to use.</param>
+        [PublicAPI]
+        public void AddPackage
+        (
+            [NotNull] string packageName,
+            [NotNull] IPackage package,
+            [CanBeNull] IProgress<PackageNodesCreationProgress> progress,
+            CancellationToken ct = default
+        )
         {
             if (PackagesMetaNode.Children.Any(c => c.Name == packageName))
             {
@@ -87,10 +115,20 @@ namespace FileTree.Tree
 
             PackagesMetaNode.AppendChild(packageNode);
 
+            var paths = package.GetFileList().ToList();
+
             // This loop iterates over each path in turn, forming a left-to-right scanning ReadOnlySpan<char> that picks
-            // out the individual path components without
-            foreach (var path in package.GetFileList())
+            // out the individual path components without allocating additional strings
+            ulong completedPaths = 0;
+            var progressReport = new PackageNodesCreationProgress
             {
+                PathCount = (ulong)paths.Count
+            };
+
+            foreach (var path in paths)
+            {
+                ct.ThrowIfCancellationRequested();
+
                 IBranchNode parentVirtualNode = Root;
                 Node parentHardNode = packageNode;
 
@@ -212,6 +250,14 @@ namespace FileTree.Tree
                         parentVirtualNode = existingVirtualNode;
                         parentHardNode = existingHardNode;
                     }
+                }
+
+                if (!(progress is null))
+                {
+                    completedPaths++;
+                    progressReport.CompletedPaths = completedPaths;
+
+                    progress.Report(progressReport);
                 }
             }
         }
