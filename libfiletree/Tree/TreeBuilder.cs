@@ -18,6 +18,7 @@
 //
 
 using System;
+using System.IO;
 using System.Linq;
 using System.Threading;
 using FileTree.ProgressReporters;
@@ -242,6 +243,16 @@ namespace FileTree.Tree
                         if (existingVirtualNode is VirtualNode virtualNode)
                         {
                             virtualNode.AppendHardNode(existingHardNode);
+                        }
+                    }
+
+                    if (existingHardNode.Type.HasFlag(NodeType.File))
+                    {
+                        var fileInfo = package.GetFileInfo(path);
+
+                        if (!(fileInfo is null) && fileInfo.IsDeleted)
+                        {
+                            existingHardNode.Type |= NodeType.Deleted;
                         }
                     }
 

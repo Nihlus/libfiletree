@@ -9,12 +9,11 @@
         <LangVersion>latest</LangVersion>
     </PropertyGroup>
     <PropertyGroup>
-        <Version>1.0.0-rc3</Version>
+        <Version>1.0.0-rc5</Version>
         <PackageReleaseNotes>Initial release.</PackageReleaseNotes>
     </PropertyGroup>
     <ItemGroup>
-        <PackageReference Include="liblistfile" Version="3.0.0-rc7" />
-        <PackageReference Include="libwarcraft" Version="2.7.0" />
+        <PackageReference Include="liblistfile" Version="3.0.0-rc8" />
         <PackageReference Include="System.Memory" Version="4.5.1" />
     </ItemGroup>
     <Import Project="..\props\common.props" />
