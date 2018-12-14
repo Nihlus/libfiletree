@@ -159,21 +159,25 @@ namespace FileTree.Tree
                     Node existingVirtualNode = null;
                     foreach (var childVirtualNode in parentVirtualNode.Children)
                     {
-                        if (childVirtualNode.Name.AsSpan().Equals(part, StringComparison.OrdinalIgnoreCase))
+                        if (!childVirtualNode.Name.AsSpan().Equals(part, StringComparison.OrdinalIgnoreCase))
                         {
-                            existingVirtualNode = childVirtualNode;
-                            break;
+                            continue;
                         }
+
+                        existingVirtualNode = childVirtualNode;
+                        break;
                     }
 
                     Node existingHardNode = null;
                     foreach (var childHardNode in parentHardNode.Children)
                     {
-                        if (childHardNode.Name.AsSpan().Equals(part, StringComparison.OrdinalIgnoreCase))
+                        if (!childHardNode.Name.AsSpan().Equals(part, StringComparison.OrdinalIgnoreCase))
                         {
-                            existingHardNode = childHardNode;
-                            break;
+                            continue;
                         }
+
+                        existingHardNode = childHardNode;
+                        break;
                     }
 
                     if (!(existingVirtualNode is null) && !(existingHardNode is null))
@@ -196,6 +200,13 @@ namespace FileTree.Tree
                                 FileType = FileInfoUtilities.GetFileType(partName),
                                 Type = NodeType.File
                             };
+
+                            var fileInfo = package.GetFileInfo(path);
+
+                            if (!(fileInfo is null) && fileInfo.IsDeleted)
+                            {
+                                existingHardNode.Type |= NodeType.Deleted;
+                            }
                         }
                         else
                         {
@@ -246,30 +257,24 @@ namespace FileTree.Tree
                         }
                     }
 
-                    if (existingHardNode.Type.HasFlag(NodeType.File))
+                    if (pathSpan.Length == 0)
                     {
-                        var fileInfo = package.GetFileInfo(path);
-
-                        if (!(fileInfo is null) && fileInfo.IsDeleted)
-                        {
-                            existingHardNode.Type |= NodeType.Deleted;
-                        }
+                        continue;
                     }
 
-                    if (pathSpan.Length != 0)
-                    {
-                        parentVirtualNode = existingVirtualNode;
-                        parentHardNode = existingHardNode;
-                    }
+                    parentVirtualNode = existingVirtualNode;
+                    parentHardNode = existingHardNode;
                 }
 
-                if (!(progress is null))
+                if (progress is null)
                 {
-                    completedPaths++;
-                    progressReport.CompletedPaths = completedPaths;
-
-                    progress.Report(progressReport);
+                    continue;
                 }
+
+                completedPaths++;
+                progressReport.CompletedPaths = completedPaths;
+
+                progress.Report(progressReport);
             }
         }
 
